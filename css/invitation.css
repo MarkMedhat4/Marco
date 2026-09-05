@@ -1,0 +1,243 @@
+/* ============================================================
+   THE OPENING INVITATION — sealed card + bow, the signature piece
+   ============================================================ */
+
+.gate{
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(120% 90% at 50% 12%, rgba(154,156,124,0.35), transparent 60%),
+    linear-gradient(160deg, var(--burgundy-deep) 0%, var(--burgundy) 42%, #5B4A45 62%, var(--olive-deep) 100%);
+  transition: opacity 900ms var(--ease-silk), visibility 900ms var(--ease-silk);
+  padding: var(--gutter);
+}
+.gate::before{
+  /* soft vignette so the card reads as the sole subject */
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(60% 55% at 50% 46%, transparent 40%, rgba(20,12,14,0.35) 100%);
+  pointer-events: none;
+}
+.gate--closed{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.gate__scene{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.gate__hint{
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-on-dark);
+  opacity: 0.72;
+  text-align: center;
+  transition: opacity var(--dur-med) var(--ease-silk);
+}
+.gate.is-opening .gate__hint,
+.gate.is-card-open .gate__hint{ opacity: 0; }
+
+/* ---- The stage: card and ribbon share this exact box ---- */
+.invitation-stage{
+  position: relative;
+  width: min(92vw, 430px);
+  aspect-ratio: 5 / 7;
+}
+
+/* ---- The card ---- */
+.invitation-card{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(155deg, #FFFDF8 0%, var(--paper) 55%, var(--cream) 100%);
+  border-radius: 2px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  transition: transform 900ms var(--ease-silk), box-shadow 900ms var(--ease-silk);
+  transform-origin: center 60%;
+}
+.gate.is-card-open .invitation-card{
+  transform: translateY(-18px) scale(1.015);
+  box-shadow: 0 45px 110px -30px rgba(46,26,33,0.6);
+}
+
+.invitation-card__border{
+  position: relative;
+  width: 100%; height: 100%;
+  border: 1px solid var(--gold-soft);
+  outline: 1px solid rgba(108,110,82,0.35);
+  outline-offset: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: clamp(1rem, 4vh, 1.6rem) 1rem;
+}
+
+/* top and bottom text zones flank the ribbon; the middle band
+   between them is left clear on purpose, for the bow */
+.invitation-card__zone{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 1.8vh, 0.9rem);
+  flex: 0 0 34%;
+  min-height: 0;
+}
+.invitation-card__zone--top{ justify-content: flex-start; padding-top: clamp(0.4rem, 2vh, 1rem); }
+.invitation-card__zone--bottom{ justify-content: flex-end; padding-bottom: clamp(0.2rem, 1.5vh, 0.6rem); }
+.invitation-card__ribbon-clearance{ flex: 0 0 32%; }
+
+.invitation-card__corner{ position: absolute; width: 34px; height: 34px; opacity: 0.85; }
+.invitation-card__corner path{ stroke: var(--olive); fill: none; stroke-width: 1; }
+.invitation-card__corner.tl{ top: -1px; left: -1px; }
+.invitation-card__corner.tr{ top: -1px; right: -1px; transform: scaleX(-1); }
+.invitation-card__corner.bl{ bottom: -1px; left: -1px; transform: scaleY(-1); }
+.invitation-card__corner.br{ bottom: -1px; right: -1px; transform: scale(-1); }
+
+.invitation-card__monogram{
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  color: var(--gold);
+  letter-spacing: 0.12em;
+}
+.invitation-card__eyebrow{
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--olive-deep);
+}
+.invitation-card__names{
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 6.5vw, 2.35rem);
+  color: var(--burgundy-deep);
+  line-height: 1.18;
+}
+.invitation-card__names span{
+  display: block;
+  font-size: 0.55em;
+  color: var(--olive);
+  margin-block: 0.15em;
+  font-style: italic;
+}
+.invitation-card__date{
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  letter-spacing: 0.22em;
+  color: var(--ink-soft);
+}
+.invitation-card__venue{
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--olive-deep);
+  text-transform: uppercase;
+}
+
+/* ---- The ribbon + bow, layered over the card ---- */
+.ribbon{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.ribbon__band{
+  position: absolute;
+  background: linear-gradient(180deg, var(--burgundy-soft), var(--burgundy) 45%, var(--burgundy-deep));
+  box-shadow: inset 0 0 0 1px rgba(176,138,78,0.35);
+  transition: transform 900ms var(--ease-silk), opacity 700ms var(--ease-silk);
+}
+.ribbon__band--horizontal{
+  left: 0; right: 0; top: 50%;
+  height: clamp(28px, 7.5vw, 40px);
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, var(--burgundy-soft), var(--burgundy) 45%, var(--burgundy-deep));
+}
+.gate.is-opening .ribbon__band--horizontal{ transform: translate(-130%, -50%); opacity: 0; }
+
+.ribbon__bow{
+  position: relative;
+  pointer-events: auto;
+  width: clamp(150px, 40vw, 210px);
+  height: clamp(110px, 30vw, 155px);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+.ribbon__bow:focus-visible{
+  outline: 2px solid var(--gold-soft);
+  outline-offset: 6px;
+}
+.ribbon__bow svg{ width: 100%; height: 100%; overflow: visible; }
+
+.bow-part{ transition: transform var(--dur-slow) var(--ease-silk), opacity var(--dur-slow) var(--ease-silk); transform-origin: center; }
+.bow-loop-left{ transform-origin: 62% 50%; }
+.bow-loop-right{ transform-origin: 38% 50%; }
+.bow-tail-left{ transform-origin: 55% 20%; }
+.bow-tail-right{ transform-origin: 45% 20%; }
+.bow-knot{ transform-origin: center; }
+
+.ribbon__bow:hover .bow-loop-left{ transform: rotate(-3deg) translateX(-2px); }
+.ribbon__bow:hover .bow-loop-right{ transform: rotate(3deg) translateX(2px); }
+
+.gate.is-opening .bow-knot{
+  transform: scaleX(0.35) scaleY(1.1);
+  opacity: 0;
+  transition-delay: 60ms;
+}
+.gate.is-opening .bow-loop-left{
+  transform: translate(-52px, -8px) rotate(-48deg) scale(0.55);
+  opacity: 0;
+}
+.gate.is-opening .bow-loop-right{
+  transform: translate(52px, -8px) rotate(48deg) scale(0.55);
+  opacity: 0;
+}
+.gate.is-opening .bow-tail-left{
+  transform: translate(-34px, 86px) rotate(-30deg);
+  opacity: 0;
+  transition-delay: 90ms;
+}
+.gate.is-opening .bow-tail-right{
+  transform: translate(34px, 86px) rotate(30deg);
+  opacity: 0;
+  transition-delay: 90ms;
+}
+
+/* keyboard/tap affordance ring, subtle, not a "click here" banner */
+.ribbon__bow::after{
+  content: '';
+  position: absolute; inset: 10%;
+  border-radius: 50%;
+  border: 1px dashed rgba(216,195,154,0.0);
+  transition: border-color var(--dur-med) var(--ease-silk);
+}
+.ribbon__bow:hover::after,
+.ribbon__bow:focus-visible::after{ border-color: rgba(216,195,154,0.5); }
+
+@media (max-width: 480px){
+  .invitation-stage{ aspect-ratio: 4.6 / 7; }
+}

@@ -1,0 +1,84 @@
+/* ============================================================
+   DESIGN TOKENS — Marco & Nadeen
+   Burgundy + Olive, blended, ivory ground, whisper of gold
+   ============================================================ */
+
+:root{
+  /* ---- Burgundy ---- */
+  --burgundy:        #6E2B40;
+  --burgundy-deep:   #4A1B2B;
+  --burgundy-soft:   #A9677C;
+  --burgundy-mist:   #F3E7EA;
+
+  /* ---- Olive ---- */
+  --olive:           #6C6E52;
+  --olive-deep:      #4C4E39;
+  --olive-soft:      #9A9C7C;
+  --olive-mist:      #EEEEE2;
+
+  /* ---- Ground ---- */
+  --ivory:           #FBF6EE;
+  --cream:           #F5EFE2;
+  --beige:           #E9DEC7;
+  --paper:           #FAF4EA;
+
+  /* ---- Accent ---- */
+  --gold:            #B08A4E;
+  --gold-soft:       #D8C39A;
+
+  /* ---- Text ---- */
+  --ink:             #2C2420;
+  --ink-soft:        #5B4F47;
+  --ink-on-dark:     #F4ECE4;
+
+  /* ---- Type ---- */
+  --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-body: 'Jost', 'Inter', sans-serif;
+
+  --step--1: clamp(0.8rem, 0.77rem + 0.14vw, 0.9rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1:  clamp(1.25rem, 1.16rem + 0.43vw, 1.5rem);
+  --step-2:  clamp(1.6rem, 1.42rem + 0.86vw, 2.15rem);
+  --step-3:  clamp(2.1rem, 1.8rem + 1.5vw, 3rem);
+  --step-4:  clamp(2.75rem, 2.2rem + 2.6vw, 4.2rem);
+  --step-5:  clamp(3.4rem, 2.5rem + 4.3vw, 6rem);
+
+  /* ---- Spacing ---- */
+  --space-2xs: 0.4rem;
+  --space-xs:  0.8rem;
+  --space-sm:  1.4rem;
+  --space-md:  2.4rem;
+  --space-lg:  4rem;
+  --space-xl:  6.5rem;
+  --space-2xl: 9.5rem;
+
+  /* ---- Layout ---- */
+  --container: 1180px;
+  --container-narrow: 760px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+
+  /* ---- Effects ---- */
+  --shadow-soft: 0 20px 60px -25px rgba(46, 26, 33, 0.45);
+  --shadow-card: 0 30px 80px -30px rgba(46, 26, 33, 0.55);
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  /* ---- Motion ---- */
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 280ms;
+  --dur-med: 560ms;
+  --dur-slow: 1100ms;
+
+  /* ---- Z ---- */
+  --z-nav: 40;
+  --z-overlay: 100;
+  --z-toast: 200;
+}
+
+@media (prefers-reduced-motion: reduce){
+  :root{
+    --dur-fast: 1ms;
+    --dur-med: 1ms;
+    --dur-slow: 1ms;
+  }
+}

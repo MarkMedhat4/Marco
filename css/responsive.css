@@ -1,0 +1,40 @@
+/* ============================================================
+   RESPONSIVE — mobile-first refinements
+   ============================================================ */
+
+@media (max-width: 640px){
+  .site-nav__links{ display: none; }
+  .site-nav__toggle{ display: inline-flex; }
+  .section{ padding-block: var(--space-xl); }
+  .hero{ padding-top: var(--space-lg); }
+  .schedule__row{ grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+@media (min-width: 641px){
+  .site-nav__mobile{ display: none; }
+}
+
+/* Safe-area handling for notch devices */
+.music-toggle{
+  bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(1rem, 3vw, 2rem));
+}
+.gate{
+  padding-top: calc(env(safe-area-inset-top, 0px) + var(--gutter));
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--gutter));
+}
+.site-nav{
+  padding-top: calc(env(safe-area-inset-top, 0px) + 1.1rem);
+}
+
+/* Prevent any horizontal scroll from decorative elements */
+html, body{ max-width: 100%; overflow-x: hidden; }
+
+/* Large desktop refinement */
+@media (min-width: 1400px){
+  .container{ max-width: 1280px; }
+}
+
+/* Toast repositioning above music button on very small screens */
+@media (max-width: 380px){
+  .toast{ bottom: 5.5rem; }
+}
