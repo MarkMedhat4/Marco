@@ -238,6 +238,12 @@
 .ribbon__bow:hover::after,
 .ribbon__bow:focus-visible::after{ border-color: rgba(216,195,154,0.5); }
 
-@media (max-width: 480px){
-  .invitation-stage{ aspect-ratio: 4.6 / 7; }
+@media (max-width: 640px){
+  .couple__together img{
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    height: auto;
+    object-fit: cover;
+    object-position: top center;
+  }
 }
